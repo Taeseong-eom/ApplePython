@@ -19,4 +19,4 @@ for i in range(200):
     print(str(딕셔너리['body']['candles'][i]['close']) + "\n")
 
 
-# 이걸로 학습 시키면 코인 가격 예측될듯?
+# 이걸로 학습 시키면 코인 가격 예측될듯?s
