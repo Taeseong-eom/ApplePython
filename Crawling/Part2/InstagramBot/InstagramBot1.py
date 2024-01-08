@@ -18,12 +18,12 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager #드라이버 대신에 사용(자동 업데이트)
 from selenium.webdriver.common.by import By
 
-
+import urllib.request
 
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.get('https://instagram.com') # 드라이버에는 사이트에 관한 모든 정보가 들어가게 됨
-time.sleep(5) # 5초 정지(페이지 뜨는데 시간이 걸려서 기다림)
+time.sleep(3) # 5초 정지(페이지 뜨는데 시간이 걸려서 기다림)
 
 # e = driver.find_element(By.CLASS_NAME, '_ap3a').text
 # print(e)# 가입하기 글자 출력완.
@@ -38,9 +38,24 @@ time.sleep(5) # 5초 정지(페이지 뜨는데 시간이 걸려서 기다림)
 
 #인스타그램 자동로그인 해보자
 e = driver.find_element(By.NAME, 'username') # 여기에 아이디 입력할 거임
-e.send_keys('djaxotjd95@naver.com')
+e.send_keys('6380714@mju.ac.kr')
 e = driver.find_element(By.NAME, 'password') # 여기에 비밀번호 입력할 거임
-e.send_keys('비밀번호')
+e.send_keys('?????') # 깃허브에 올릴거라서 가림
 e.send_keys(Keys.ENTER) # 이렇게 엔터도 칠 수 있음
+
+time.sleep(3)
+
+#이제 페이지 이동하여 사진을 저장할 것이다.   
+driver.get('https://www.instagram.com/explore/tags/%EC%82%AC%EA%B3%BC/') # 이렇게 하면 페이지 이동함.
+
+driver.implicitly_wait(10) #요소가 없으면 최대 10초간 기다려라.
+
+e = driver.find_element(By.CLASS_NAME, '_aagw').click() # s면 여러개 찾아서 리스트로 만듬.[]
+
+time.sleep(3)
+
+
+이미지 = driver.find_element(By.CSS_SELECTOR, 'div._aagv > img').get_attribute('src') #src를 가져와서 저장.
+urllib.request.urlretrieve(이미지,'1.jpg') 
 
 time.sleep(1000000) #코드 맨 마지막에 추가/ 자동 종료 방지
