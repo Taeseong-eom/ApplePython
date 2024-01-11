@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import pyperclip
-
+import os
 
 # selenium 4
 from selenium import webdriver
@@ -31,7 +31,7 @@ e.send_keys(Keys.CONTROL, 'v') # 이렇게 입력하면 너무 빨리 입력하�
 
 time.sleep(1)
 
-pyperclip.copy('????') # 복사
+pyperclip.copy('???') # 복사
 e = driver.find_element(By.CSS_SELECTOR, '#pw')
 e.send_keys(Keys.CONTROL, 'v') 
 
@@ -55,6 +55,12 @@ e = driver.find_element(By.CSS_SELECTOR, '.se_editable')
 e.send_keys("테스트입니다.")
 time.sleep(1)
 driver.find_element(By.CSS_SELECTOR, '#publishSettingPublic_3').click()
+time.sleep(1)
+
+#사진 업로드 추가
+driver.find_element(By.CSS_SELECTOR, '#editor_frame > div > div.editor-container > div.header-container > div:nth-child(2) > div > div:nth-child(1) > div.toolbar-wrap.is-scroll > ul > li:nth-child(1) > button').click()
+time.sleep(1)
+os.system(os.getcwd() + "/FileUpload.exe")
 time.sleep(1)
 
 driver.find_element(By.CSS_SELECTOR, '.btn_applyPost').click()
