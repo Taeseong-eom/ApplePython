@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import pyperclip
 
+
 # selenium 4
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -30,12 +31,36 @@ e.send_keys(Keys.CONTROL, 'v') # 이렇게 입력하면 너무 빨리 입력하�
 
 time.sleep(1)
 
-pyperclip.copy('?????') # 복사
+pyperclip.copy('????') # 복사
 e = driver.find_element(By.CSS_SELECTOR, '#pw')
 e.send_keys(Keys.CONTROL, 'v') 
 
 time.sleep(1)
 
 e.send_keys(Keys.ENTER)
+
+# 다 추적당하기때문에 인간처럼 동작하게 만들어야함.
+time.sleep(1)
+driver.get('https://m.naver.com/') 
+time.sleep(1)
+driver.get('https://m.blog.naver.com/FeedList.naver') 
+time.sleep(1)
+driver.get('https://blog.editor.naver.com/editor?deviceType=mobile&returnUrl=https%3A%2F%2Fm.blog.naver.com%2FGoWriteForm.naver') 
+time.sleep(1)
+
+e = driver.find_element(By.CSS_SELECTOR, '#se_component_wrapper > div:nth-child(1) > div > div.se_sectionArea.se_align-left > div > div > div > div > textarea')
+e.send_keys("네이버 자동 블로그 생성")
+time.sleep(1)
+e = driver.find_element(By.CSS_SELECTOR, '.se_editable')
+e.send_keys("테스트입니다.")
+time.sleep(1)
+driver.find_element(By.CSS_SELECTOR, '#publishSettingPublic_3').click()
+time.sleep(1)
+
+driver.find_element(By.CSS_SELECTOR, '.btn_applyPost').click()
+
+
+
+
 
 time.sleep(1000000) #코드 맨 마지막에 추가/ 자동 종료 방지
