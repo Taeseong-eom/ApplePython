@@ -23,8 +23,10 @@ def 함수2(data):
         return "의자"
     elif re.search('Sofa', str(data)):
         return "소파"
+    elif re.search('\D',str(data) ):
+        return "not error"
     else:
-        return "기타"
+        return "에러"
 
 raw['카테고리'] = raw['상품목록'].apply(함수2)
 print(raw)

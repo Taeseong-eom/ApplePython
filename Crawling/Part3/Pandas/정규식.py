@@ -31,6 +31,7 @@ print(re.sub('\D','','2abcd12334  eㄴㅋㅋㅋㅋ$  f^gㄱ안녕하세요') ) #
 
 # 나머지는 검색해서 찾아서 쓰자.
 
+
 결과 = re.findall('@[a-z+]+\.+[a-z+]', 'abc@example.com',re.IGNORECASE)
 print(결과)
 
