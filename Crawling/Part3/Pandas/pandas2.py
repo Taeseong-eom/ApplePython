@@ -21,6 +21,8 @@ raw['부가세포함가격'] = raw['판매가'] * 1.1
 def 함수2(data):
     if re.search('Chair', str(data)):
         return "의자"
+    elif re.search('Sofa', str(data)):
+        return "소파"
     else:
         return "기타"
 
